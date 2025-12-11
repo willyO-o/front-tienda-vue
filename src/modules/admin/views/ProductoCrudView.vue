@@ -234,7 +234,7 @@ const productoFocus = ref({
 });
 var myModal = null;
 const params = reactive({
-    pageSize: 2,
+    pageSize: 10,
     page: 1,
 });
 

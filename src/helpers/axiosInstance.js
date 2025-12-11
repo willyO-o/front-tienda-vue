@@ -55,6 +55,9 @@ axiosInstance.interceptors.response.use(
                 console.error("Error refreshing token:", err);
                 // Optionally, redirect to login page
                 window.location.href = "/login";
+                localStorage.removeItem("token");
+                localStorage.removeItem("refreshToken");
+                return Promise.reject(err);
 
             }
         }

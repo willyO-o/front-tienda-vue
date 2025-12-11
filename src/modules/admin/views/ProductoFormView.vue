@@ -208,7 +208,7 @@ onBeforeMount(async () => {
         datosProducto.precio = resultadoProducto.precio;
         datosProducto.stock = resultadoProducto.stock;
         datosProducto.categoria_id = resultadoProducto.categoria_id;
-        listadoImagenes.value = JSON.parse(resultadoProducto.imagen);
+        listadoImagenes.value = (resultadoProducto.imagen);
 
     }
 

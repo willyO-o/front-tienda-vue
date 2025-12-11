@@ -11,8 +11,8 @@
                     <div class="col-auto">
                         <div class="input-group input-group-static mb-4">
                             <label for="exampleFormControlSelect1" class="ms-0">Filtrar</label>
-                            <select class="form-control" id="exampleFormControlSelect1" v-model="params.pageSize" @change="cargarUsuarios">
-                                <option value="5">5</option>
+                            <select class="form-control" id="exampleFormControlSelect1" v-model.number="params.pageSize" @change="cargarUsuarios(1)">
+                                <option value="5" >5</option>
                                 <option value="10">10</option>
                                 <option value="20">20</option>
                                 <option value="50">50</option>
@@ -115,7 +115,7 @@ import Pagination from '@/modules/admin/components/Pagination.vue';
 const totalUsuarios = ref(0);
 const usuarios = ref([]);
 const params = reactive({
-    pageSize: 5,
+    pageSize: 10,
     page: 1,
 });
 
