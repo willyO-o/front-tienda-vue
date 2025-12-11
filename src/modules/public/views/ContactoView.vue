@@ -23,20 +23,20 @@
                                 <p class="pb-3">
                                     Por favor, completa el siguiente formulario y te responderemos lo antes posible.
                                 </p>
-                                <form id="contact-form" method="post" autocomplete="off">
+                                <form id="contact-form" method="post" autocomplete="off" novalidate="novalidate" @submit.prevent="enviarMensajeContacto">
                                     <div class="card-body p-0 my-3">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="input-group input-group-static mb-4">
                                                     <label>Nombre Completo</label>
-                                                    <input type="email" class="form-control" placeholder="Nombre Completo">
+                                                    <input type="email" class="form-control" placeholder="Nombre Completo" v-model="datosContacto.nombre_completo">
                                                 </div>
                                             </div>
                                             <div class="col-md-6 ps-md-2">
                                                 <div class="input-group input-group-static mb-4">
                                                     <label>Correo</label>
                                                     <input type="email" class="form-control"
-                                                        placeholder="hello@creative-tim.com">
+                                                        placeholder="hello@creative-tim.com" v-model="datosContacto.correo">
                                                 </div>
                                             </div>
                                         </div>
@@ -44,12 +44,12 @@
                                             <div class="input-group input-group-static mb-4">
                                                 <label>Mensaje</label>
                                                 <textarea name="message" class="form-control" id="message" rows="6"
-                                                    placeholder="Describe tu problema "></textarea>
+                                                    placeholder="Describe tu problema " v-model="datosContacto.mensaje"></textarea>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12 text-center">
-                                                <button type="button" class="btn bg-gradient-dark mt-3 mb-0">
+                                                <button type="submit" class="btn bg-gradient-dark mt-3 mb-0">
                                                     Enviar
                                                     Mensage</button>
                                             </div>
@@ -67,5 +67,56 @@
 
 
 <script setup>
+
+
+import { ref, reactive } from 'vue';
+
+import Swal from 'sweetalert2';
+import { enviarMensaje } from '@/services/contactoService';
+
+
+const datosContacto = reactive({
+    nombre_completo: '',
+    correo: '',
+    mensaje: ''
+})
+
+
+const enviarMensajeContacto =  async() =>{
+
+    try{
+
+        const respuesta = await enviarMensaje(datosContacto);
+
+        console.log("respuesta", respuesta);
+        Swal.fire({
+            title: 'Exito!',
+            text: 'Su mensaje ha sido enviado correctamente. Nos pondremos en contacto con usted pronto.',
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+        });
+
+
+        datosContacto.nombre_completo= '';
+        datosContacto.correo= '';
+        datosContacto.mensaje= '';
+
+
+
+    }catch(e){
+
+        Swal.fire({
+            title: 'Error!',
+            text: 'No se pudo enviar el mensaje. Intente nuevamente mas tarde.',
+            icon: 'error',
+            confirmButtonText: 'Aceptar'
+        });
+
+    }
+
+}
+
+
+
 
 </script>

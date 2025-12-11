@@ -101,7 +101,7 @@
                         <p class="text-secondary ms-3">
                             Mostrando {{ productos.length }} de {{ totalProductos }} Resultados Encontrados
                         </p>
-                        <Pagination :currentPage="params.page" :total="totalProductos" :perPage="params.limit"
+                        <Pagination :currentPage="params.page" :total="totalProductos" :perPage="params.pageSize"
                             @page-change="cargarProductos" />
 
                         <div></div>
@@ -234,7 +234,7 @@ const productoFocus = ref({
 });
 var myModal = null;
 const params = reactive({
-    limit: 10,
+    pageSize: 2,
     page: 1,
 });
 

@@ -75,6 +75,5 @@ import { getImagenPrincipal } from '@/helpers/productoHelper';
 const carritoStore = useCarritoStore();
 
 
-console.log(carritoStore.carrito);
 
 </script>

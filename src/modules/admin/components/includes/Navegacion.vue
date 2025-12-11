@@ -73,7 +73,6 @@ onMounted(() => {
     const sidenav = document.getElementById('sidenav-main');
     let body = document.getElementsByTagName('body')[0];
     let className = 'g-sidenav-pinned';
-    console.log(iconNavbarSidenav);
 
 
     if (iconNavbarSidenav) {

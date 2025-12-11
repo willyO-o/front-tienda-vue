@@ -189,7 +189,6 @@ const agregarImagen = () => {
 
 
 const quitarImagen = (index) => {
-    console.log(index, listadoImagenes.value);
     listadoImagenes.value.splice(index, 1);
 }
 
@@ -199,7 +198,6 @@ onBeforeMount(async () => {
 
     datosProducto.id = router.currentRoute.value.params.id;
 
-    // console.log(datosProducto.id);
 
     if (datosProducto.id) {
 
@@ -228,21 +226,28 @@ const guardarProducto = async () => {
         return;
     }
 
-    datosProducto.imagen = JSON.stringify(listadoImagenes.value);
-    // datosProducto.imagen = (listadoImagenes); 
+    // datosProducto.imagen = JSON.stringify(listadoImagenes.value);
+    datosProducto.imagen = listadoImagenes.value; 
 
     try {
 
         if (datosProducto.id) {
-            await updateProducto(datosProducto.id,datosProducto);
+            await updateProducto(datosProducto.id, datosProducto);
 
         } else {
             await createProducto(datosProducto);
         }
 
+        Swal.fire({
+            title: 'Exito!',
+            text: 'El producto se ha guardado correctamente.',
+            icon: 'success',
+            confirmButtonText: 'ok'
+        })
+        router.push('/admin/productos');
+
     } catch (e) {
 
-        // console.log(e.request);
         Swal.fire({
             title: 'Error!',
             text: e.request.responseText,
@@ -252,7 +257,6 @@ const guardarProducto = async () => {
     }
 
 
-    router.push('/admin/productos');
 
 }
 

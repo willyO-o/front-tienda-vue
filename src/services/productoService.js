@@ -3,14 +3,14 @@ import { axiosInstance } from "@/helpers/axiosInstance";
 
 const getProductos = async (params = {}) => {
 
-    if (params.limit === undefined) {
-        params.limit = 9;
+    if (params.pageSize === undefined) {
+        params.pageSize = 9;
     }
 
 
     if (params.page !== undefined) {
 
-        params.offset = (params.page - 1) * params.limit
+        params.offset = (params.page - 1) * params.pageSize
 
     }
 

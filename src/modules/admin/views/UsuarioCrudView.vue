@@ -7,13 +7,36 @@
                 </div>
             </div>
             <div class="card-body px-0 pb-2">
+                <div class="row justify-content-between px-3 mb-3">
+                    <div class="col-auto">
+                        <div class="input-group input-group-static mb-4">
+                            <label for="exampleFormControlSelect1" class="ms-0">Filtrar</label>
+                            <select class="form-control" id="exampleFormControlSelect1" v-model="params.pageSize" @change="cargarUsuarios">
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="col-auto">
+
+                        <div class="input-group input-group-static mb-4">
+                            <label>Buscar Usuario</label>
+                            <input type="text" class="form-control" placeholder="Buscar Usuario">
+                        </div>
+                    </div>
+                </div>
+
                 <div class="table-responsive p-0">
                     <table class="table align-items-center mb-0">
                         <thead>
                             <tr>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                     Correo / Usuario</th>
-                
+
                                 <th
                                     class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                     Creado el</th>
@@ -25,14 +48,13 @@
                         </thead>
 
                         <tbody>
-                            <tr
-                            v-for="usuario in usuarios" :key="usuario.id"
-                            >
+                            <tr v-for="usuario in usuarios" :key="usuario.id">
                                 <td>
                                     <div class="d-flex px-2 py-1">
                                         <div>
-                                            <img :src=" usuario.avatar|| '/assets/img/avatars/user-avatar1.png'"
-                                                class="avatar avatar-sm me-3 border-radius-lg " :alt="`user-${usuario.id}`">
+                                            <img :src="usuario.avatar || '/assets/img/avatars/user-avatar1.png'"
+                                                class="avatar avatar-sm me-3 border-radius-lg "
+                                                :alt="`user-${usuario.id}`">
                                         </div>
                                         <div class="d-flex flex-column justify-content-center">
                                             <h6 class="mb-0 text-sm">{{ usuario.email }}</h6>
@@ -46,12 +68,11 @@
                                 <td class="align-middle text-center text-sm">
                                     <span class="badge badge-sm "
                                         :class="usuario.estado == 'activo' ? 'bg-gradient-success' : 'bg-gradient-danger'">
-                                    {{ usuario.estado }}</span>
+                                        {{ usuario.estado }}</span>
                                 </td>
-        
+
                                 <td class="align-middle">
                                     <a href="javascript:;" class="text-secondary font-weight-bold text-xs"
-                                        
                                         data-toggle="tooltip" data-original-title="Edit user">
                                         <i class="fas fa-eye"></i>
                                     </a>
@@ -74,9 +95,9 @@
                         <p class="text-secondary ms-3">
                             Mostrando {{ usuarios.length }} de {{ totalUsuarios }} Resultados Encontrados
                         </p>
-                        <Pagination :currentPage="params.page" :total="totalUsuarios" :perPage="params.limit"
+                        <Pagination :currentPage="params.page" :total="totalUsuarios" :perPage="params.pageSize"
                             @page-change="cargarUsuarios" />
-                            <p></p>
+                        <p></p>
                     </div>
                 </div>
             </div>
@@ -86,7 +107,7 @@
 
 <script setup>
 
-import { ref, onMounted,reactive } from 'vue'
+import { ref, onMounted, reactive } from 'vue'
 import { getUsuarios } from '@/services/usuarioService';
 
 import Pagination from '@/modules/admin/components/Pagination.vue';
@@ -94,14 +115,14 @@ import Pagination from '@/modules/admin/components/Pagination.vue';
 const totalUsuarios = ref(0);
 const usuarios = ref([]);
 const params = reactive({
-    limit: 10,
+    pageSize: 5,
     page: 1,
 });
 
 
 const cargarUsuarios = async (page = 1) => {
     params.page = page;
-    
+
     const resultado = await getUsuarios(params);
 
     usuarios.value = resultado.data;

@@ -92,7 +92,6 @@ onBeforeMount(async () => {
 
     datosCategoria.id = router.currentRoute.value.params.id;
 
-    // console.log(datosCategoria.id);
 
     if (datosCategoria.id) {
 
@@ -121,7 +120,6 @@ const guardarCategoria = async () => {
 
     } catch (e) {
 
-        console.log(e.request);
         Swal.fire({
             title: 'Error!',
             text: e.request.responseText,

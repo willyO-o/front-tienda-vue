@@ -3,12 +3,12 @@ import { axiosInstance } from "@/helpers/axiosInstance";
 
 const getCategorias = async (params = {}) => {
 
-    if (params.limit === undefined) {
-        params.limit = 10;
+    if (params.pageSize === undefined) {
+        params.pageSize = 10;
     }
 
     if (params.page !== undefined) {
-        params.offset = (params.page - 1) * params.limit
+        params.offset = (params.page - 1) * params.pageSize
     }
 
     const response = await axiosInstance.get("/categorias", { params });

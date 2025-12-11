@@ -34,15 +34,18 @@ import { defineProps, computed } from 'vue';
 
 const props = defineProps({
     imagenes: {
-        type: String,
+        type: [String, Object],
         default: ''
     }
 });
 
-console.log(props.imagenes);
 
 
 const getImagenes = computed(() => {
+
+    if (typeof props.imagenes == 'object') {
+        return props.imagenes;
+    }
 
     const arrImg = JSON.parse(props.imagenes || '[]') || [];
 

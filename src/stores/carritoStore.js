@@ -18,7 +18,6 @@ export const useCarritoStore = defineStore('carrito', () => {
 
     function agregarProducto(producto, cantidad = 1) {
 
-        // console.log(producto);
 
         const existeProducto = carrito.value.find(p => p.id === producto.id);
         if (existeProducto) {

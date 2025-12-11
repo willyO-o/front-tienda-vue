@@ -266,8 +266,8 @@ const productos = ref([]);
 
 const listarProductos = async () => {
     const resultado = await getProductos({ limit: 3 });
+
     productos.value = resultado.data;
-    console.log(resultado.data);
 }
 
 onBeforeMount( () => {

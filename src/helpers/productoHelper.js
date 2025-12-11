@@ -2,6 +2,7 @@
 
 const getImagenPrincipal= (imagenes)=>{
 
+    if( typeof imagenes == 'object' ) return imagenes[0];
     const arrayImagenes= JSON.parse(imagenes);
     return arrayImagenes[0];
 

@@ -7,7 +7,7 @@ const login = async (data) => {
 }
 
 const getDatosUsuario = async () => {
-    const response = await axiosInstance.get("/auth/me");
+    const response = await axiosInstance.get("/auth/profile");
 
     return response.data;
 }

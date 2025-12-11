@@ -50,7 +50,6 @@ const totalPages = computed(() => {
 
 const changePage = (page) => {
 
-    console.log(page);
     if (page < 1 || page > totalPages.value) {
         return;
     }

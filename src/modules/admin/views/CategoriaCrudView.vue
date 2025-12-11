@@ -71,7 +71,7 @@
                         <p class="text-secondary ms-3">
                             Mostrando {{ categorias.length }} de {{ totalCategorias }} Resultados Encontrados
                         </p>
-                        <Pagination :currentPage="params.page" :total="totalCategorias" :perPage="params.limit"
+                        <Pagination :currentPage="params.page" :total="totalCategorias" :perPage="params.pageSize"
                             @page-change="cargarCategorias" />
                         <p></p>
                     </div>
@@ -95,7 +95,7 @@ import Swal from 'sweetalert2';
 const totalCategorias = ref(0);
 const categorias = ref([]);
 const params = reactive({
-    limit: 10,
+    pageSize: 10,
     page: 1,
 });
 

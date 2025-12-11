@@ -62,7 +62,7 @@
 
                                     <div class="form-check form-switch d-flex align-items-center mb-3">
                                         <input class="form-check-input" type="checkbox" id="rememberMe" checked
-                                            v-model="loginState.rememberMe" />
+                                             />
                                         <label class="form-check-label mb-0 ms-3" for="rememberMe">Recordar
                                             Sesion</label>
                                     </div>
@@ -102,25 +102,22 @@ const router = useRouter();
 const loginState = reactive({
     email: '',
     password: '',
-    rememberMe: false
+    // rememberMe: false
 });
 
 const errorLogin = ref(false);
 
 const iniciarSesion = async () => {
 
-    // console.log(loginState);
 
     try {
         const res = await login(loginState);
 
-        console.log(res);
         errorLogin.value = false;
         //guardar token en localstorage
-        localStorage.setItem('token', res.access_token.token);
-        console.log(res.access_token.token);
+        localStorage.setItem('token', res.access_token);
         //redirigir a la pagina de inicio
-        localStorage.setItem('refreshToken', JSON.stringify(res.refresh_token.token));
+        localStorage.setItem('refreshToken', JSON.stringify(res.refresh_token));
 
 
         const datosUsuario = await getDatosUsuario();

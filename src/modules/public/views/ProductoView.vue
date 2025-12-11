@@ -130,7 +130,6 @@ import { ref, onBeforeMount } from 'vue';
 import { useRouter } from 'vue-router';
 
 
-// console.log(router);
 
 const router = useRouter();
 
@@ -163,6 +162,10 @@ const restarCantidad = () => {
 
 
 const imagenes = () => {
+
+    if ( typeof producto.value.imagen == 'object') {
+        return producto.value.imagen;
+    }
     const arrImg = JSON.parse(producto.value.imagen) || [];
 
     return arrImg;
