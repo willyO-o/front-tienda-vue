@@ -38,4 +38,7 @@ import NavBar from '@/modules/public/components/includes/NavBar.vue'
 import Header from '@/modules/public/components/includes/Header.vue'
 
 import FooterPage from '@/modules/public/components/includes/FooterPage.vue'
+
+
+import Chatbot from '@/components/Chatbot.vue';
 </script>

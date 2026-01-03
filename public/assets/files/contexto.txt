@@ -1,0 +1,66 @@
+MANUAL DE LA TIENDA VIRTUAL DEMO
+
+1.  INFORMACIÓN GENERAL La tienda DemoShop es una tienda en línea
+    ficticia dedicada a la venta de productos tecnológicos, accesorios
+    para el hogar, ropa casual y artículos educativos. La tienda opera
+    únicamente en línea y no posee sucursales físicas. El horario de
+    atención es de lunes a viernes de 09:00 a 18:00 (hora local). Los
+    fines de semana solo se atienden consultas automatizadas.
+
+2.  REGISTRO DE USUARIOS Los usuarios pueden registrarse utilizando
+    correo electrónico y contraseña. El correo debe ser válido y único.
+    La contraseña debe tener al menos 8 caracteres, una mayúscula y un
+    número. Una vez registrado, el usuario puede acceder a su panel
+    personal.
+
+3.  PROCESO DE COMPRA Para comprar un producto:
+
+-   El usuario debe iniciar sesión.
+-   Agregar productos al carrito.
+-   Confirmar dirección de envío.
+-   Seleccionar método de pago.
+-   Confirmar pedido.
+
+4.  MÉTODOS DE PAGO Se aceptan los siguientes métodos:
+
+-   Tarjeta de crédito y débito (Visa, Mastercard).
+-   Transferencia bancaria.
+-   Pago móvil (solo en algunos países). No se aceptan pagos en
+    efectivo.
+
+5.  ENVÍOS Los envíos se realizan en un plazo de 3 a 5 días hábiles. El
+    costo de envío se calcula automáticamente según la ciudad. No se
+    realizan envíos internacionales.
+
+6.  DEVOLUCIONES Las devoluciones se aceptan dentro de los 30 días
+    posteriores a la compra. El producto debe estar sin uso y con su
+    empaque original. No se aceptan devoluciones de productos digitales.
+
+7.  SOPORTE El soporte se ofrece por:
+
+-   Chat en la web.
+-   Correo electrónico.
+-   Centro de ayuda.
+
+8.  PRODUCTOS DIGITALES Los cursos digitales se entregan automáticamente
+    tras el pago. No son reembolsables.
+
+9.  PROMOCIONES Las promociones pueden variar semanalmente. Los cupones
+    no son acumulables.
+
+10. SEGURIDAD Todos los pagos están protegidos con cifrado SSL. No se
+    almacenan datos de tarjetas.
+
+11. FACTURACIÓN Las facturas se generan automáticamente. Se envían al
+    correo electrónico registrado.
+
+12. POLÍTICA DE PRIVACIDAD Los datos no se comparten con terceros. Solo
+    se usan para procesar pedidos y soporte.
+
+13. RESTRICCIONES Está prohibido el uso automatizado de la plataforma.
+    No se permite la reventa sin autorización.
+
+14. CONTACTO Correo: soporte@demoshop.fake Teléfono: +000 000 000
+
+15. NOTAS ADICIONALES Este documento es completamente ficticio y solo
+    para pruebas. No representa ninguna tienda real.
