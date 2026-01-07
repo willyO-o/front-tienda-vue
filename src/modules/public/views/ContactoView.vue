@@ -42,10 +42,10 @@
                                                 <label>Correo</label>
 
                                                 <div class="input-group input-group-outline ">
-                                                    <Field name="email" type="email" v-model="datosContacto.correo"
+                                                    <Field name="correo" type="email" v-model="datosContacto.correo"
                                                         class="form-control" placeholder="hello@creative-tim.com" />
                                                 </div>
-                                                <ErrorMessage class="text-danger small" name="email" />
+                                                <ErrorMessage class="text-danger small" name="correo" /> 
 
                                             </div>
                                         </div>
