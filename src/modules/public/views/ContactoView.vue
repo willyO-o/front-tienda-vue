@@ -23,39 +23,52 @@
                                 <p class="pb-3">
                                     Por favor, completa el siguiente formulario y te responderemos lo antes posible.
                                 </p>
-                                <form id="contact-form" method="post" autocomplete="off">
+                                <Form :validation-schema="contactoValidationSchema" @submit="eviarMensaje"
+                                    id="contact-form" method="post" autocomplete="off">
                                     <div class="card-body p-0 my-3">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="input-group input-group-static mb-4">
-                                                    <label>Nombre Completo</label>
-                                                    <input type="email" class="form-control" placeholder="Nombre Completo">
+                                                <label>Nombre Completo</label>
+
+                                                <div class="input-group input-group-outline ">
+                                                    <Field name="nombre_completo" type="text"
+                                                        v-model="datosContacto.nombre_completo" class="form-control"
+                                                        placeholder="Nombre Completo" />
                                                 </div>
+                                                <ErrorMessage class="text-danger small " name="nombre_completo" />
+
                                             </div>
                                             <div class="col-md-6 ps-md-2">
-                                                <div class="input-group input-group-static mb-4">
-                                                    <label>Correo</label>
-                                                    <input type="email" class="form-control"
-                                                        placeholder="hello@creative-tim.com">
+                                                <label>Correo</label>
+
+                                                <div class="input-group input-group-outline ">
+                                                    <Field name="email" type="email" v-model="datosContacto.correo"
+                                                        class="form-control" placeholder="hello@creative-tim.com" />
                                                 </div>
+                                                <ErrorMessage class="text-danger small" name="email" />
+
                                             </div>
                                         </div>
                                         <div class="form-group mb-0 mt-md-0 mt-4">
-                                            <div class="input-group input-group-static mb-4">
-                                                <label>Mensaje</label>
-                                                <textarea name="message" class="form-control" id="message" rows="6"
-                                                    placeholder="Describe tu problema "></textarea>
+                                            <label>Mensaje</label>
+
+                                            <div class="input-group input-group-outline ">
+                                                <Field as="textarea" name="mensaje" v-model="datosContacto.mensaje"
+                                                    class="form-control" id="message" rows="6"
+                                                    placeholder="Describe tu problema " />
                                             </div>
+                                            <ErrorMessage class="text-danger small" name="mensaje" />
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12 text-center">
-                                                <button type="button" class="btn bg-gradient-dark mt-3 mb-0">
+                                                <button type="submit" class="btn bg-gradient-dark mt-3 mb-0">
                                                     Enviar
                                                     Mensage</button>
                                             </div>
+
                                         </div>
                                     </div>
-                                </form>
+                                </Form>
                             </div>
                         </div>
                     </div>
@@ -67,5 +80,43 @@
 
 
 <script setup>
+
+import { contactoValidationSchema } from '@/modules/public/schemas/contactoValidationSchema.js';
+
+import { Field, Form, ErrorMessage, } from 'vee-validate';
+
+import { createContacto } from '@/services/contactoService.js';
+
+import { reactive } from 'vue';
+
+import Swal from 'sweetalert2';
+
+const datosContacto = reactive({
+    nombre_completo: '',
+    correo: '',
+    mensaje: ''
+});
+
+
+const eviarMensaje = async () => {
+
+    const response = await createContacto(datosContacto);
+
+
+
+    datosContacto.nombre_completo = '';
+    datosContacto.correo = '';
+    datosContacto.mensaje = '';
+
+    Swal.fire(
+        'Mensaje Enviado',
+        'Gracias por contactarnos, te responderemos pronto.',
+        'success'
+    );
+
+
+}
+
+
 
 </script>
