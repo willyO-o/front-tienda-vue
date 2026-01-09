@@ -120,7 +120,7 @@ const iniciarSesion = async () => {
         localStorage.setItem('token', res.access_token.token);
         console.log(res.access_token.token);
         //redirigir a la pagina de inicio
-        localStorage.setItem('refreshToken', JSON.stringify(res.refresh_token.token));
+        localStorage.setItem('refreshToken', res.refresh_token.token);
 
 
         const datosUsuario = await getDatosUsuario();

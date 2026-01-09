@@ -10,7 +10,7 @@
             <div class="row">
 
                 <RouterView />
-                
+
             </div>
 
             <FooterBar />
@@ -117,5 +117,27 @@
 import FooterBar from '@/modules/admin/components/includes/FooterBar.vue';
 import Navegacion from '@/modules/admin/components/includes/Navegacion.vue';
 import Sidebar from '@/modules/admin/components/includes/Sidebar.vue';
+
+
+import { watch } from 'vue';
+
+import { useRouter } from 'vue-router';
+import { useStorage } from '@vueuse/core'
+
+const router = useRouter();
+const token = useStorage('token', null);
+
+
+
+watch(token, (nuevoToken) => {
+
+    if (!nuevoToken && router.currentRoute.value.meta.requireAuth) {
+        router.push('/login');
+    }
+
+});
+
+
+
 
 </script>
